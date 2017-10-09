@@ -2,8 +2,9 @@
 <section>
   <nav class="navbar is-transparent">
     <div class="navbar-brand">
-      <a class="navbar-item" href="http://bulma.io">
-        <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28">
+      <a class="navbar-item" href="/">
+        <!-- <img src="http://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28"> -->
+        <span class="title"><H1><b>ACL</b></H1></span>
       </a>
 
       <a class="navbar-item is-hidden-desktop" href="https://github.com/jgthms/bulma" target="_blank">
@@ -159,23 +160,23 @@
           </div>
         </div>
         -->
-        <router-link to="/" class="navbar-item"><span v-lang.hi></span></router-link>
-        <router-link to="opcion" class="navbar-item">Opciones</router-link>
-        <router-link to="opcionrouter" class="navbar-item">Opciones (Router)</router-link>
-        <b-dropdown class="navbar-item">
-            <button class="button" slot="trigger" @click="seleccionarIdioma()">
+        <router-link to="/" class="navbar-item"><span v-lang.home></span></router-link>
+        <router-link to="opcion" class="navbar-item" ><span v-lang.menuOptions></span></router-link>
+        <router-link to="opcionrouter" class="navbar-item"><span v-lang.menuOptions></span> (Router)</router-link>
+        <b-dropdown class="navbar-item" v-model="selectedLanguage">
+            <button class="button" slot="trigger">
                 <span>Idiomas</span>
                 <b-icon icon="language"></b-icon>
                 <b-icon icon="arrow_drop_down"></b-icon>
             </button>
 
-            <b-dropdown-item value="en"><span class='idioma-items'><img src="./assets/en-640x480.png" height="33"/>English</span></b-dropdown-item>
-            <b-dropdown-item value="pt"><span class='idioma-items'><img src="./assets/pt-640x480.png" height="33"/>Portuguese</span></b-dropdown-item>
-            <b-dropdown-item value="es"><span class='idioma-items'><img src="./assets/es-640x480.png" height="33"/>Spanish</span></b-dropdown-item>
+            <b-dropdown-item value="en" @click="seleccionarIdioma('en')"><span class='idioma-items'><img src="./assets/en-640x480.png" height="33"/>English</span></b-dropdown-item>
+            <b-dropdown-item value="pt" @click="seleccionarIdioma('pt')"><span class='idioma-items'><img src="./assets/pt-640x480.png" height="33"/>Portuguese</span></b-dropdown-item>
+            <b-dropdown-item value="es" @click="seleccionarIdioma('es')"><span class='idioma-items'><img src="./assets/es-640x480.png" height="33"/>Spanish</span></b-dropdown-item>
         </b-dropdown>
-        <b-field class="navbar-item ">
-            <b-select placeholder="Idioma" icon="language">
-<!--           <option value="AF">Afrikanns</option>
+        <!-- <b-field class="navbar-item ">
+            <b-select placeholder="Idioma" icon="language" @change="seleccionarIdioma(rowId, $event)">
+          <option value="AF">Afrikanns</option>
           <option value="SQ">Albanian</option>
           <option value="AR">Arabic</option>
           <option value="HY">Armenian</option>
@@ -188,9 +189,9 @@
           <option value="HR">Croation</option>
           <option value="CS">Czech</option>
           <option value="DA">Danish</option>
-          <option value="NL">Dutch</option> -->
-          <option value="EN"><img src="./assets/en-640x480.png" height="31"/>English</option>
-<!--           <option value="ET">Estonian</option>
+          <option value="NL">Dutch</option>
+          <option value="EN">English</option>
+          <option value="ET">Estonian</option>
           <option value="FJ">Fiji</option>
           <option value="FI">Finnish</option>
           <option value="FR">French</option>
@@ -221,18 +222,18 @@
           <option value="NE">Nepali</option>
           <option value="NO">Norwegian</option>
           <option value="FA">Persian</option>
-          <option value="PL">Polish</option> -->
+          <option value="PL">Polish</option>
           <option value="PT">Portuguese</option>
-<!--           <option value="PA">Punjabi</option>
+          <option value="PA">Punjabi</option>
           <option value="QU">Quechua</option>
           <option value="RO">Romanian</option>
           <option value="RU">Russian</option>
           <option value="SM">Samoan</option>
           <option value="SR">Serbian</option>
           <option value="SK">Slovak</option>
-          <option value="SL">Slovenian</option> -->
+          <option value="SL">Slovenian</option>
           <option value="ES">Spanish</option>
-<!--           <option value="SW">Swahili</option>
+          <option value="SW">Swahili</option>
           <option value="SV">Swedish </option>
           <option value="TA">Tamil</option>
           <option value="TT">Tatar</option>
@@ -246,9 +247,9 @@
           <option value="UZ">Uzbek</option>
           <option value="VI">Vietnamese</option>
           <option value="CY">Welsh</option>
-          <option value="XH">Xhosa</option> -->
+          <option value="XH">Xhosa</option>
             </b-select>
-        </b-field>        
+        </b-field> -->        
         <!-- <a class="navbar-item " href="http://bulma.io/expo/">
           <span class="bd-emoji">⭐️</span>
           Expo
@@ -283,6 +284,7 @@
               </a>
 
             </p>
+
             <p class="control">
               <a class="button is-primary" href="https://github.com/jgthms/bulma/archive/0.5.3.zip">
                 <span class="icon">
@@ -307,9 +309,21 @@
 
 export default {
 
+  created() {
+    //this.selectedLanguage = this.$language;
+  },
+
+  data() {
+    return {
+      selectedLanguage: this.$language,
+    }
+  },
+
   methods: {
-    seleccionarIdioma(select) {
-      console.info($event.select);
+    seleccionarIdioma(select, event) {
+      this.$language = select;
+
+      location.reload();
     }
   }
 
@@ -319,5 +333,10 @@ export default {
 <style>
 .idioma-items {
   display: inline-flex;
+}
+
+.navbar-item span.title {
+  font-weight: bold;
+  font-size: 200%;
 }
 </style>

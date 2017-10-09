@@ -7,17 +7,16 @@ import 'buefy/lib/buefy.css'
 import VueRouter from 'vue-router';
 
 import MultiLanguage from 'vue-multilanguage'
+import {enMessages} from './languages/en-english';
+import {esMessages} from './languages/es-spanish';
+import {ptMessages} from './languages/pt-portuguese';
 
 Vue.use(MultiLanguage, {
-	default: 'es',
-	en: {
-		hi: 'Hello',
-		welcome: 'Welcome'
-	},
-	pt: {
-		hi: 'Olá',
-		welcome: 'Bem-vindo'
-	},
+  default: 'es',
+  
+	es: esMessages,
+  en: enMessages,
+	pt: ptMessages,
 });
 Vue.use(Buefy);
 Vue.use(VueRouter);
