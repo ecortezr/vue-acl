@@ -18,24 +18,25 @@ Vue.use(MultiLanguage, {
   en: enMessages,
 	pt: ptMessages,
 });
+
 Vue.use(Buefy);
 Vue.use(VueRouter);
 
-import opcionlista from './components/opcionListaRouter.vue';
-import opcionedit from './components/opcionEditRouter.vue';
+import opcionlista from './components/opcionLista.vue';
+import opcionedit from './components/opcionEdit.vue';
 
-import opcionlistarouter from './components/opcionLista.vue';
-import opcioneditrouter from './components/opcionEdit.vue';
+import opcionlistarouter from './components/opcionListaRouter.vue';
+import opcioneditrouter from './components/opcionEditRouter.vue';
 
 const routes = [
 
     { path: '/', name: "inicio" },
 
-    { path: '/opcionrouter', name: "opcionlistarouter", component: opcionlistarouter },
+    { path: '/opcion', name: "opcionlista", component: opcionlista },
 
-    { path: '/opcion', name: "opcionlista", component: opcionlista, children: [
+    { path: '/opcionrouter', name: "opcionlistarouter", component: opcionlistarouter, children: [
 
-        { path: 'edit:codigo', name: "opcionedit", component: opcionedit, props: true },
+        { path: 'edit:codigo', name: "opcionedit", component: opcioneditrouter, props: true },
 
     ] },
  

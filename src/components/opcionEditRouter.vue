@@ -4,7 +4,7 @@
         <editcomponente>
 
             <!-- Título -->
-            <template slot="titulo">Editando la opción: {{codigo}} con descripción {{descripcion}}</template>
+            <template slot="titulo">Router - Editando la opción: {{codigo}} con descripción {{descripcion}}</template>
             <!-- Ícono para cerrar -->
             <button slot="icono" class="delete" @click='regresar'></button>
             <!-- Cuerpo -->
@@ -36,7 +36,7 @@ export default {
     methods: {
         regresar() {
             console.log('Sí pasó por regresar');
-            this.$router.push({ name: 'opcionlista' }, (router) => {
+            this.$router.push({ name: 'opcionlistarouter'  }, (router) => {
                 console.error('pasó');
                 console.error(router);
             }, (router) => {
