@@ -39,14 +39,14 @@
                     </b-table>
                 </section>
             </div>
-            <template v-if="Object.keys(selected).length">
-                <transition name="custom-classes-transition" enter-active-class="animated zoomInRight" leave-active-class="animated zoomOutRight" appear>
-
-                    <router-view></router-view>
-
-                </transition>
-            </template>
         </div>
+        <template v-if="Object.keys(selected).length">
+            <transition name="custom-classes-transition" enter-active-class="animated zoomInRight" leave-active-class="animated zoomOutRight" appear>
+
+                <router-view></router-view>
+
+            </transition>
+        </template>
     </section>
 </template>
 <script>
@@ -58,9 +58,9 @@ export default {
             selected: {},
             opciones: [
                 { id: 1, codigo: 'C', descripcion: 'Agregar', codigo2: '01-01', descripcion2: 'Agregar 2', codigo3: '01-01-01', descripcion3: 'Agregar 3' },
-                { id: 2, codigo: 'U', descripcion: 'Editar' , codigo2: '02-01', descripcion2: 'Editar 2', codigo3: '02-01-01', descripcion3: 'Editar 3' },
-                { id: 3, codigo: 'D', descripcion: 'Eliminar' , codigo2: '03-01', descripcion2: 'Eliminar 2', codigo3: '03-01-01', descripcion3: 'Eliminar 3' },
-                { id: 4, codigo: 'R', descripcion: 'Consultar' , codigo2: '04-01', descripcion2: 'Consultar 2', codigo3: '04-01-01', descripcion3: 'Consultar 3' },
+                { id: 2, codigo: 'U', descripcion: 'Editar', codigo2: '02-01', descripcion2: 'Editar 2', codigo3: '02-01-01', descripcion3: 'Editar 3' },
+                { id: 3, codigo: 'D', descripcion: 'Eliminar', codigo2: '03-01', descripcion2: 'Eliminar 2', codigo3: '03-01-01', descripcion3: 'Eliminar 3' },
+                { id: 4, codigo: 'R', descripcion: 'Consultar', codigo2: '04-01', descripcion2: 'Consultar 2', codigo3: '04-01-01', descripcion3: 'Consultar 3' },
             ]
         }
     },
@@ -68,8 +68,8 @@ export default {
 
     },
     watch: {
-        selected: function (val) {
-            this.$router.push({ name: 'opcionedit', params: val});
+        selected: function(val) {
+            this.$router.push({ name: 'opcionedit', params: val });
         }
     }
 
@@ -93,5 +93,4 @@ export default {
 .aparecer-leave-active {
     transition: opacity 1s;
 }
-
 </style>

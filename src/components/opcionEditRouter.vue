@@ -4,7 +4,7 @@
         <editcomponente>
 
             <!-- Título -->
-            <template slot="titulo">Router - Editando la opción: {{codigo}} con descripción {{descripcion}}</template>
+            <template slot="titulo">Router - Editando la opción: {{id}} con descripción {{descripcion}}</template>
             <!-- Ícono para cerrar -->
             <button slot="icono" class="delete" @click='regresar'></button>
             <!-- Cuerpo -->
@@ -28,7 +28,7 @@ import editcomponente from './editComponent.vue';
 
 export default {
     components: { editcomponente },
-    props: ['codigo', 'descripcion'],
+    props: ['id', 'codigo', 'descripcion'],
     created() {
 
         console.info('Cargó EditRouter');
@@ -37,11 +37,11 @@ export default {
         regresar() {
             console.log('Sí pasó por regresar');
             this.$router.push({ name: 'opcionlistarouter'  }, (router) => {
-                console.error('pasó');
-                console.error(router);
+                console.log('pasó');
+                console.log(router);
             }, (router) => {
-                console.error('falló');
-                console.error(router);
+                console.log('falló');
+                console.log(router);
             });
 
             //this.$router.replace('/opcion');
