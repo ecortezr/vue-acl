@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import App from './App.vue'
+import App from './AppTest.vue'
 
 import Buefy from 'buefy'
 import 'buefy/lib/buefy.css'
@@ -36,7 +36,7 @@ const routes = [
 
     { path: '/opcionrouter', name: "opcionlistarouter", component: opcionlistarouter, children: [
 
-        { path: 'edit:codigo', name: "opcionedit", component: opcioneditrouter, props: true },
+        { path: 'edit:id', name: "opcionedit", component: opcioneditrouter, props: true },
 
     ] },
  
